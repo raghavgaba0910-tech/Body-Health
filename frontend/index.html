@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BodyFat Health Recommender</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-100 min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-indigo-600 text-white py-6 shadow-lg">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-3xl font-bold">BodyFat Health Recommender</h1>
+            <p class="mt-2 text-indigo-100">Predict Body Fat + Get Personalized Diet & Exercise Plans</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+            <!-- Input Form -->
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <h2 class="text-2xl font-semibold mb-6 text-gray-800">Your Details</h2>
+                
+                <form id="predictForm" class="space-y-5">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Age (years)</label>
+                        <input type="number" id="age" required min="15" max="80"
+                               class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Weight (kg)</label>
+                        <input type="number" id="weight" required step="0.1"
+                               class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Height (cm)</label>
+                        <input type="number" id="height" required step="0.1"
+                               class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Waist Circumference (cm)</label>
+                        <input type="number" id="waist" required step="0.1"
+                               class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none">
+                    </div>
+
+                    <button type="submit"
+                            class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-lg transition">
+                        Get My Recommendations
+                    </button>
+                </form>
+            </div>
+
+            <!-- Results Section -->
+            <div id="results" class="hidden space-y-6">
+                <!-- Metrics Cards -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white p-5 rounded-xl shadow text-center">
+                        <p class="text-sm text-gray-500">Body Fat</p>
+                        <p id="bodyfatValue" class="text-3xl font-bold text-indigo-600">-</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl shadow text-center">
+                        <p class="text-sm text-gray-500">BMI</p>
+                        <p id="bmiValue" class="text-3xl font-bold text-indigo-600">-</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl shadow text-center">
+                        <p class="text-sm text-gray-500">Daily Calories</p>
+                        <p id="caloriesValue" class="text-2xl font-bold text-green-600">-</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl shadow text-center">
+                        <p class="text-sm text-gray-500">Daily Protein</p>
+                        <p id="proteinValue" class="text-2xl font-bold text-green-600">-</p>
+                    </div>
+                </div>
+
+                <!-- Diet Card -->
+                <div class="bg-white rounded-2xl shadow-lg p-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Diet Plan</h3>
+                    <p id="dietTitle" class="text-indigo-600 font-medium text-lg"></p>
+                    <p id="dietDesc" class="text-gray-600 mt-1"></p>
+                    <div class="mt-4 grid grid-cols-2 gap-4 text-sm">
+                        <div>
+                            <span class="font-medium">Calories:</span>
+                            <span id="dietCalories"></span>
+                        </div>
+                        <div>
+                            <span class="font-medium">Protein:</span>
+                            <span id="dietProtein"></span>
+                        </div>
+                    </div>
+                    <ul id="dietTips" class="mt-4 space-y-1 text-sm text-gray-700 list-disc list-inside"></ul>
+                </div>
+
+                <!-- Exercise Card -->
+                <div class="bg-white rounded-2xl shadow-lg p-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Exercise Plan</h3>
+                    <p id="exerciseTitle" class="text-indigo-600 font-medium text-lg"></p>
+                    <p id="exerciseDesc" class="text-gray-600 mt-1 mb-4"></p>
+                    <ul id="exercisePlan" class="space-y-2 text-sm text-gray-700"></ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
