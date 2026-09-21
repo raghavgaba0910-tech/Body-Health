@@ -1,112 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BodyFat Health Recommender</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1020">
+  <title>BodyFat | Health Intelligence</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-100 min-h-screen">
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="BodyFat home">
+      <span class="brand-mark"><span></span><span></span><span></span></span>
+      <span>BM:Buddy<span class="brand-light">/Your health and fitness care</span></span>
+    </a>
+    <div class="topbar-right">
+      <span class="live-dot"></span><span class="topbar-label">PERSONAL HEALTH INTELLIGENCE</span>
+      <span class="topbar-badge">BETA</span>
+    </div>
+  </header>
 
-    <!-- Header -->
-    <header class="bg-indigo-600 text-white py-6 shadow-lg">
-        <div class="container mx-auto px-4 text-center">
-            <h1 class="text-3xl font-bold">BodyFat Health Recommender</h1>
-            <p class="mt-2 text-indigo-100">Predict Body Fat + Get Personalized Diet & Exercise Plans</p>
+  <main class="page-shell">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> YOUR BODY. BETTER UNDERSTOOD.</div>
+        <h1>Turn your numbers<br>into <span class="gradient-text">momentum.</span></h1>
+        <p class="hero-subtitle">A clearer picture of your body composition, nutrition targets, and weekly movement plan — built around your details.</p>
+        <div class="hero-pills">
+          <span><i class="pill-icon">✦</i> ML-powered prediction</span>
+          <span><i class="pill-icon">↗</i> Personalized insights</span>
+          <span><i class="pill-icon">⌁</i> Actionable routines</span>
         </div>
-    </header>
+      </div>
+      <div class="hero-orbit" aria-hidden="true">
+        <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+        <div class="orbit-core"><span class="core-cross">✳</span></div>
+        <span class="orbit-node node-a"></span><span class="orbit-node node-b"></span><span class="orbit-node node-c"></span>
+        <div class="orbit-caption">YOUR WELLNESS<br><b>STARTS HERE</b></div>
+      </div>
+    </section>
 
-    <main class="container mx-auto px-4 py-10">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <section class="workspace">
+      <aside class="form-panel glass-panel">
+        <div class="panel-heading">
+          <div>
+            <div class="section-kicker">01 / YOUR PROFILE</div>
+            <h2>Build your baseline</h2>
+            <p class="panel-intro">Enter a few measurements to generate your personalized report.</p>
+          </div>
+          <div class="heading-icon">⌘</div>
+        </div>
 
-            <!-- Input Form -->
-            <div class="bg-white rounded-2xl shadow-lg p-8">
-                <h2 class="text-2xl font-semibold mb-6 text-gray-800">Your Details</h2>
-                
-                <form id="predictForm" class="space-y-5">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Age (years)</label>
-                        <input type="number" id="age" required min="15" max="80"
-                               class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none">
-                    </div>
+        <form id="predictForm" novalidate>
+          <div class="form-grid">
+            <div class="field">
+              <label for="age">Age <span>YEARS</span></label>
+              <div class="input-wrap"><span class="input-icon">◷</span><input type="number" id="age" required min="15" max="80" placeholder="e.g. 22"></div>
+              <small class="field-hint">Between 15–80 years</small>
+            </div>
+            <div class="field">
+              <label for="weight">Weight <span>KG</span></label>
+              <div class="input-wrap"><span class="input-icon">⚖</span><input type="number" id="weight" required min="20" max="350" step="0.1" placeholder="e.g. 72.5"></div>
+              <small class="field-hint">Your current body weight</small>
+            </div>
+            <div class="field">
+              <label for="height">Height <span>CM</span></label>
+              <div class="input-wrap"><span class="input-icon">↕</span><input type="number" id="height" required min="100" max="250" step="0.1" placeholder="e.g. 175"></div>
+              <small class="field-hint">Without shoes</small>
+            </div>
+            <div class="field">
+              <label for="waist">Waist <span>CM</span></label>
+              <div class="input-wrap"><span class="input-icon">◎</span><input type="number" id="waist" required min="40" max="200" step="0.1" placeholder="e.g. 82"></div>
+              <small class="field-hint">Measure around your waist</small>
+            </div>
+          </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Weight (kg)</label>
-                        <input type="number" id="weight" required step="0.1"
-                               class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none">
-                    </div>
+          <div class="privacy-note"><span>◈</span><p>Your measurements are sent to your local prediction API to generate results.</p></div>
+          <button class="primary-button" id="submitButton" type="submit">
+            <span class="button-label">Generate my health report</span><span class="button-arrow">↗</span>
+            <span class="button-spinner" aria-hidden="true"></span>
+          </button>
+          <p id="formError" class="form-error" role="alert" aria-live="polite"></p>
+        </form>
+        <div class="form-foot"><span class="foot-check">✓</span> Takes less than a minute <span class="foot-separator">•</span> No account needed</div>
+      </aside>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Height (cm)</label>
-                        <input type="number" id="height" required step="0.1"
-                               class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none">
-                    </div>
+      <section class="results-column">
+        <div class="empty-state glass-panel" id="emptyState">
+          <div class="empty-visual">
+            <div class="empty-ring ring-one"></div><div class="empty-ring ring-two"></div>
+            <div class="empty-center"><span>✳</span></div>
+            <span class="float-chip chip-top">BODY COMPOSITION</span>
+            <span class="float-chip chip-bottom">PERSONALIZED PLAN</span>
+          </div>
+          <div class="empty-kicker">YOUR REPORT IS WAITING</div>
+          <h2>Small inputs.<br><span>Meaningful insights.</span></h2>
+          <p>Complete your profile and your prediction, nutrition targets, and movement plan will appear here.</p>
+          <div class="empty-progress"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        </div>
 
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Waist Circumference (cm)</label>
-                        <input type="number" id="waist" required step="0.1"
-                               class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none">
-                    </div>
+        <div id="results" class="results hidden" aria-live="polite">
+          <div class="results-topline">
+            <div><div class="section-kicker">02 / YOUR PERSONAL REPORT</div><h2>Your body snapshot</h2></div>
+            <button type="button" id="resetButton" class="text-button">↺ Start over</button>
+          </div>
 
-                    <button type="submit"
-                            class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-lg transition">
-                        Get My Recommendations
-                    </button>
-                </form>
+          <div class="metrics-grid">
+            <article class="metric-card bodyfat-card">
+              <div class="metric-top"><span class="metric-label">PREDICTED BODY FAT</span><span class="metric-symbol">◉</span></div>
+              <div class="bodyfat-layout">
+                <div class="fat-gauge" id="fatGauge" style="--gauge:0deg"><div class="gauge-inner"><strong id="bodyfatValue">—</strong><span>BODY FAT</span></div></div>
+                <div class="fat-copy"><span class="metric-status" id="bodyfatStatus">Awaiting result</span><p id="bodyfatInsight">Your prediction will appear here.</p></div>
+              </div>
+              <div class="metric-footnote">Model estimate · not a medical diagnosis</div>
+            </article>
+            <article class="metric-card bmi-card">
+              <div class="metric-top"><span class="metric-label">BODY MASS INDEX</span><span class="metric-symbol">⌁</span></div>
+              <div class="metric-value"><strong id="bmiValue">—</strong><span class="metric-unit">BMI</span></div>
+              <div class="bmi-scale"><span class="scale-segment s1"></span><span class="scale-segment s2"></span><span class="scale-segment s3"></span><span class="scale-segment s4"></span><i id="bmiMarker"></i></div>
+              <div class="scale-labels"><span>Low</span><span>Healthy</span><span>High</span></div>
+              <span class="metric-status bmi-status" id="bmiStatus">Awaiting result</span>
+            </article>
+            <article class="metric-card target-card">
+              <div class="metric-top"><span class="metric-label">DAILY CALORIES</span><span class="metric-symbol">✧</span></div>
+              <div class="metric-value"><strong id="caloriesValue">—</strong><span class="metric-unit">KCAL</span></div>
+              <p class="metric-description">Personalized energy target</p>
+              <div class="metric-mini-bar"><span></span></div>
+            </article>
+            <article class="metric-card target-card protein-card">
+              <div class="metric-top"><span class="metric-label">DAILY PROTEIN</span><span class="metric-symbol">⌬</span></div>
+              <div class="metric-value"><strong id="proteinValue">—</strong><span class="metric-unit">GRAMS</span></div>
+              <p class="metric-description">Daily protein target</p>
+              <div class="metric-mini-bar"><span></span></div>
+            </article>
+          </div>
+
+          <div class="plan-panel glass-panel">
+            <div class="plan-heading">
+              <div><div class="section-kicker">03 / YOUR ACTION PLAN</div><h2>Make your next move</h2></div>
+              <span class="plan-spark">✳</span>
+            </div>
+            <div class="tab-bar" role="tablist" aria-label="Personalized plan">
+              <button class="plan-tab active" id="dietTab" type="button" role="tab" aria-selected="true" aria-controls="dietPanel" data-tab="diet"><span>◒</span> Nutrition</button>
+              <button class="plan-tab" id="exerciseTab" type="button" role="tab" aria-selected="false" aria-controls="exercisePanel" data-tab="exercise"><span>↗</span> Movement</button>
             </div>
 
-            <!-- Results Section -->
-            <div id="results" class="hidden space-y-6">
-                <!-- Metrics Cards -->
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-white p-5 rounded-xl shadow text-center">
-                        <p class="text-sm text-gray-500">Body Fat</p>
-                        <p id="bodyfatValue" class="text-3xl font-bold text-indigo-600">-</p>
-                    </div>
-                    <div class="bg-white p-5 rounded-xl shadow text-center">
-                        <p class="text-sm text-gray-500">BMI</p>
-                        <p id="bmiValue" class="text-3xl font-bold text-indigo-600">-</p>
-                    </div>
-                    <div class="bg-white p-5 rounded-xl shadow text-center">
-                        <p class="text-sm text-gray-500">Daily Calories</p>
-                        <p id="caloriesValue" class="text-2xl font-bold text-green-600">-</p>
-                    </div>
-                    <div class="bg-white p-5 rounded-xl shadow text-center">
-                        <p class="text-sm text-gray-500">Daily Protein</p>
-                        <p id="proteinValue" class="text-2xl font-bold text-green-600">-</p>
-                    </div>
-                </div>
+            <section id="dietPanel" class="plan-content" role="tabpanel" aria-labelledby="dietTab">
+              <div class="plan-title-row"><div class="plan-icon diet-icon">◒</div><div><div class="plan-overline">YOUR NUTRITION STRATEGY</div><h3 id="dietTitle">Your diet plan</h3></div></div>
+              <p id="dietDesc" class="plan-description"></p>
+              <div class="nutrition-targets">
+                <div><span>DAILY CALORIES</span><strong id="dietCalories">—</strong></div>
+                <div><span>DAILY PROTEIN</span><strong id="dietProtein">—</strong></div>
+              </div>
+              <div class="tips-heading"><span>✦</span> Your focus points</div>
+              <ul id="dietTips" class="tips-list"></ul>
+            </section>
 
-                <!-- Diet Card -->
-                <div class="bg-white rounded-2xl shadow-lg p-6">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Diet Plan</h3>
-                    <p id="dietTitle" class="text-indigo-600 font-medium text-lg"></p>
-                    <p id="dietDesc" class="text-gray-600 mt-1"></p>
-                    <div class="mt-4 grid grid-cols-2 gap-4 text-sm">
-                        <div>
-                            <span class="font-medium">Calories:</span>
-                            <span id="dietCalories"></span>
-                        </div>
-                        <div>
-                            <span class="font-medium">Protein:</span>
-                            <span id="dietProtein"></span>
-                        </div>
-                    </div>
-                    <ul id="dietTips" class="mt-4 space-y-1 text-sm text-gray-700 list-disc list-inside"></ul>
-                </div>
-
-                <!-- Exercise Card -->
-                <div class="bg-white rounded-2xl shadow-lg p-6">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Exercise Plan</h3>
-                    <p id="exerciseTitle" class="text-indigo-600 font-medium text-lg"></p>
-                    <p id="exerciseDesc" class="text-gray-600 mt-1 mb-4"></p>
-                    <ul id="exercisePlan" class="space-y-2 text-sm text-gray-700"></ul>
-                </div>
-            </div>
+            <section id="exercisePanel" class="plan-content hidden" role="tabpanel" aria-labelledby="exerciseTab">
+              <div class="plan-title-row"><div class="plan-icon exercise-icon">↗</div><div><div class="plan-overline">YOUR MOVEMENT STRATEGY</div><h3 id="exerciseTitle">Your exercise plan</h3></div></div>
+              <p id="exerciseDesc" class="plan-description"></p>
+              <div class="tips-heading"><span>✦</span> Your weekly rhythm</div>
+              <ul id="exercisePlan" class="weekly-list"></ul>
+            </section>
+            <div class="plan-disclaimer"><span>ⓘ</span> Recommendations are general wellness guidance. Adapt them to your needs and consult a qualified professional for personalized medical advice.</div>
+          </div>
+          <div class="report-actions"><button id="copyReport" class="secondary-button" type="button">▣ Copy report summary</button><span id="copyStatus" role="status"></span></div>
         </div>
-    </main>
-
-    <script src="js/script.js"></script>
+      </section>
+    </section>
+    <footer class="page-footer"><span>BODYFAT / INSIGHT</span><span>Understand your baseline. Build your next chapter.</span><span>© 2026</span></footer>
+  </main>
+  <script src="js/script.js"></script>
 </body>
 </html>
