@@ -2,14 +2,18 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import joblib
 import numpy as np
+from pathlib import Path
 
 app = Flask(__name__)
 CORS(app)  # Allows frontend to call the API
 
 # Load the three trained models
-bodyfat_model = joblib.load("bodyfat_model.pkl")
-calorie_model = joblib.load("calorie_model.pkl")
-protein_model = joblib.load("protein_model.pkl")
+BASE_DIR = Path(__file__).resolve().parent.parent
+MODEL_DIR = BASE_DIR / "models"
+
+bodyfat_model = joblib.load(MODEL_DIR / "bodyfat_model.pkl")
+calorie_model = joblib.load(MODEL_DIR / "calorie_model.pkl")
+protein_model = joblib.load(MODEL_DIR / "protein_model.pkl")
 
 def get_recommendations(bodyfat, bmi, calories, protein, age):
     # --------- Diet Recommendation ---------
