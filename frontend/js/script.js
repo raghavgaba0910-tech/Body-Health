@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setLoading(true);
     try {
       // Backend endpoint intentionally preserved from your original project.
-      const response = await fetch("https://body-health-api.onrender.com", {
+      const response = await fetch("https://body-health-api.onrender.com/predict", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
